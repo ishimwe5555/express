@@ -1,9 +1,15 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+import router from './routes/index.js';
+
+
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.use('/', router);
 app.get("/api/", (req, res) => res.type('html').send(html));
-console.log(process.env);
+
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
